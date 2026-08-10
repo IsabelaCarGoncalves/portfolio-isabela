@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KidLoop — Case Study | Isabela Gonçalves Andrade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --terracota:#C1622F;
+    --terracota-deep:#9C4C22;
+    --sage:#7A8B6F;
+    --gold:#C9A15C;
+    --cream:#FAF6F1;
+    --ink:#3A332C;
+    --ink-soft:#6B6255;
+    --line:#E7DCCB;
+    --card:#FFFFFF;
+    --yellow:#F2B84B;
+    --green:#7FBF8E;
+    --purple:#8B7FD9;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:920px; margin:0 auto; padding:0 32px;}
+
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,246,241,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{display:flex; align-items:center; justify-content:space-between; height:72px; max-width:1080px;}
+  .brand{font-family:'Fraunces', serif; font-size:18px; font-weight:600;}
+  .back-link{
+    font-size:14px; font-weight:600; color:var(--ink-soft);
+    display:flex; align-items:center; gap:6px;
+  }
+  .back-link:hover{color:var(--terracota);}
+
+  /* ---------- HERO ---------- */
+  .case-hero{padding:72px 0 56px; border-bottom:1px solid var(--line);}
+  .case-tag-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px;}
+  .tag{
+    font-size:12px; font-weight:700; letter-spacing:.03em; text-transform:uppercase;
+    color:var(--sage); background:#EFEAE0; padding:6px 13px; border-radius:100px;
+  }
+  .case-hero h1{font-size:clamp(32px,4.6vw,46px); line-height:1.12; max-width:760px; margin-bottom:20px;}
+  .case-hero .lede{font-size:18px; color:var(--ink-soft); max-width:640px;}
+
+  .meta-strip{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+    margin-top:48px; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  }
+  .meta-item{padding:20px 0; border-right:1px solid var(--line);}
+  .meta-item:last-child{border-right:none;}
+  .meta-item .k{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); margin-bottom:6px;}
+  .meta-item .v{font-family:'Fraunces',serif; font-size:19px; color:var(--terracota);}
+
+  /* ---------- SECTIONS ---------- */
+  .section{padding:64px 0; border-bottom:1px solid var(--line);}
+  .section .eyebrow{
+    font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--terracota); margin-bottom:12px; display:block;
+  }
+  .section h2{font-size:clamp(24px,3vw,30px); margin-bottom:18px;}
+  .section p{color:var(--ink-soft); font-size:16px; margin-bottom:16px; max-width:700px;}
+  .section p strong{color:var(--ink); font-weight:600;}
+  .section ul{margin:0 0 16px 20px; color:var(--ink-soft); font-size:16px;}
+  .section li{margin-bottom:6px;}
+
+  .problem-quote{
+    font-family:'Fraunces',serif; font-style:italic; font-size:22px; line-height:1.5;
+    color:var(--ink); border-left:3px solid var(--terracota); padding:4px 0 4px 24px;
+    margin:28px 0; max-width:680px;
+  }
+
+  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:24px;}
+  .col-card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px;}
+  .col-card h4{font-size:15px; font-weight:700; margin-bottom:8px; color:var(--ink);}
+  .col-card p{font-size:14.5px; margin-bottom:0;}
+
+  /* Double diamond */
+  .diamond-flow{display:flex; gap:8px; margin-top:32px; flex-wrap:wrap;}
+  .diamond-step{
+    flex:1; min-width:150px; background:var(--card); border:1px solid var(--line);
+    border-radius:14px; padding:20px 18px; position:relative;
+  }
+  .diamond-step .n{font-family:'Fraunces',serif; font-size:13px; color:var(--gold); font-weight:600; margin-bottom:8px; display:block;}
+  .diamond-step h4{font-size:16px; margin-bottom:6px;}
+  .diamond-step p{font-size:13.5px; margin-bottom:0;}
+
+  /* Personas */
+  .personas{display:flex; flex-direction:column; gap:18px; margin-top:28px;}
+  .persona-card{
+    display:grid; grid-template-columns:180px 1fr; gap:0;
+    border:1px solid var(--line); border-radius:18px; overflow:hidden; background:var(--card);
+  }
+  .persona-side{
+    padding:28px 20px; text-align:center; color:#fff;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+  }
+  .persona-side.yellow{background:var(--yellow);}
+  .persona-side.green{background:var(--green);}
+  .persona-side.purple{background:var(--purple);}
+  .avatar-ring{
+    width:64px; height:64px; border-radius:50%; background:rgba(255,255,255,0.35);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-size:24px; font-weight:600; color:#fff;
+    border:2px solid rgba(255,255,255,0.6);
+  }
+  .persona-side .p-name{font-weight:700; font-size:15px; line-height:1.3;}
+  .persona-side .p-meta{font-size:12.5px; opacity:.92;}
+  .persona-side .p-tag{
+    font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.03em;
+    background:rgba(255,255,255,0.28); padding:4px 10px; border-radius:100px; margin-top:4px;
+  }
+  .persona-body{padding:24px 26px;}
+  .persona-body h5{font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft); margin:14px 0 6px;}
+  .persona-body h5:first-child{margin-top:0;}
+  .persona-body p, .persona-body li{font-size:14px; color:var(--ink-soft);}
+  .persona-body ul{margin:0 0 0 18px;}
+  .dor-flag{
+    display:inline-flex; gap:6px; align-items:flex-start; font-size:14px; color:var(--ink);
+    background:#FBEFE6; border-radius:10px; padding:8px 12px; margin-top:4px;
+  }
+
+  /* Journey map */
+  .journey{margin-top:32px; border:1px solid var(--line); border-radius:16px; overflow:hidden;}
+  .journey-row{display:grid; grid-template-columns:110px 1fr; border-top:1px solid var(--line);}
+  .journey-row:first-child{border-top:none;}
+  .journey-label{
+    background:var(--cream); padding:16px 14px; font-size:12px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.03em; color:var(--ink-soft);
+    display:flex; align-items:center;
+  }
+  .journey-cells{display:grid; grid-template-columns:repeat(3,1fr); background:var(--card);}
+  .journey-cell{padding:14px 16px; border-left:1px solid var(--line); font-size:13.5px; color:var(--ink-soft);}
+  .journey-cell:first-child{border-left:none;}
+  .journey-phase-head{
+    display:grid; grid-template-columns:110px repeat(3,1fr);
+    background:#EFEAE0; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--ink);
+  }
+  .journey-phase-head div{padding:10px 16px; border-left:1px solid var(--line);}
+  .journey-phase-head div:first-child{border-left:none;}
+
+  /* Sequential process */
+  .seq{display:flex; align-items:center; gap:10px; margin:28px 0; flex-wrap:wrap;}
+  .seq-node{
+    background:var(--card); border:1px solid var(--terracota); color:var(--terracota);
+    font-weight:700; font-size:14px; padding:10px 18px; border-radius:100px;
+  }
+  .seq-arrow{color:var(--ink-soft); font-size:18px;}
+
+  .cta-row{display:flex; gap:14px; margin-top:24px; flex-wrap:wrap;}
+  .btn{
+    background:var(--terracota); color:#fff; padding:12px 24px; border-radius:100px;
+    font-size:14px; font-weight:600; display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn:hover{background:var(--terracota-deep);}
+  .btn.ghost{background:transparent; color:var(--terracota); border:1.5px solid var(--terracota);}
+  .btn.ghost:hover{background:var(--terracota); color:#fff;}
+
+  .note-box{
+    background:#F3ECE1; border:1px solid var(--line); border-radius:14px; padding:20px 24px;
+    font-size:14.5px; color:var(--ink-soft); margin-top:20px;
+  }
+  .note-box strong{color:var(--ink);}
+
+  footer{background:var(--ink); color:#C9C1B3; padding:48px 0; text-align:center; font-size:13px;}
+  footer a{color:var(--cream); font-weight:600;}
+
+  @media (max-width: 760px){
+    .two-col{grid-template-columns:1fr;}
+    .persona-card{grid-template-columns:1fr;}
+    .meta-strip{grid-template-columns:1fr 1fr;}
+    .meta-item{border-bottom:1px solid var(--line);}
+    .journey-row, .journey-phase-head{grid-template-columns:1fr;}
+    .journey-cells{grid-template-columns:1fr;}
+    .journey-cell{border-left:none; border-top:1px solid var(--line);}
+    .journey-phase-head div{border-left:none; border-top:1px solid var(--line);}
+  }
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">Isabela Gonçalves Andrade</div>
+    <a href="index.html" class="back-link">← Voltar ao portfólio</a>
+  </nav>
+</header>
+
+<section class="case-hero">
+  <div class="wrap">
+    <div class="case-tag-row">
+      <span class="tag">Marketplace C2C</span>
+      <span class="tag">Double Diamond</span>
+      <span class="tag">Projeto de estudo</span>
+    </div>
+    <h1>KidLoop — construindo confiança em um marketplace de roupas infantis usadas</h1>
+    <p class="lede">Roupas de criança crescem mais rápido do que elas. O desafio do KidLoop era desenhar uma experiência de compra e venda de segunda mão que pais e responsáveis pudessem confiar de verdade.</p>
+
+    <div class="meta-strip">
+      <div class="meta-item"><div class="k">Metodologia</div><div class="v">Double Diamond</div></div>
+      <div class="meta-item"><div class="k">Pesquisa</div><div class="v">8 entrevistas</div></div>
+      <div class="meta-item"><div class="k">Personas</div><div class="v">3 perfis</div></div>
+      <a href="https://blog-pine-56950091.figma.site/" target="_blank" rel="noopener" class="meta-item" style="text-decoration:none;"><div class="k">Entrega</div><div class="v">Protótipo navegável →</div></a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <span class="eyebrow">Overview</span>
+    <h2>O problema por trás do projeto</h2>
+    <p>O <strong>KidLoop</strong> nasce de uma dor comum entre mães e pais: crianças crescem rápido, roupas têm pouco tempo de uso e acabam paradas em casa, enquanto novas peças precisam ser compradas com frequência. Ao mesmo tempo, o mercado de roupas infantis usadas ainda sofre com falta de organização, confiança e uma experiência digital realmente simples.</p>
+
+    <div class="two-col">
+      <div class="col-card">
+        <h4>Problema de usuário</h4>
+        <p>Pais precisam renovar constantemente o guarda-roupa dos filhos, mas não confiam totalmente em comprar ou vender roupas usadas online.</p>
+      </div>
+      <div class="col-card">
+        <h4>Problema de mercado</h4>
+        <p>As soluções atuais são descentralizadas, pouco mediadas e não oferecem mecanismos robustos de confiança.</p>
+      </div>
+    </div>
+
+    <div class="problem-quote">
+      "Como criar uma experiência digital segura, simples e confiável para compra e venda de roupas infantis usadas, reduzindo barreiras de confiança e facilitando o processo para pais e responsáveis?"
+    </div>
+
+    <p><strong>Oportunidade:</strong> criar uma plataforma focada em segurança, reputação e simplicidade, facilitando o consumo circular infantil.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <span class="eyebrow">Processo</span>
+    <h2>Double Diamond: da descoberta à entrega</h2>
+    <p>O projeto foi estruturado nas quatro fases clássicas do processo, garantindo que cada decisão de design estivesse ancorada em pesquisa real, não em suposição.</p>
+
+    <div class="diamond-flow">
+      <div class="diamond-step">
+        <span class="n">01</span>
+        <h4>Descoberta</h4>
+        <p>Desk research, benchmarking e pesquisa quantitativa com 8 usuários para identificar dores e comportamentos.</p>
+      </div>
+      <div class="diamond-step">
+        <span class="n">02</span>
+        <h4>Definição</h4>
+        <p>Síntese dos insights em 3 personas e elaboração do PRD, consolidando os principais fluxos do produto.</p>
+      </div>
+      <div class="diamond-step">
+        <span class="n">03</span>
+        <h4>Desenvolvimento</h4>
+        <p>Design System construído de forma independente, seguido de prototipação no Figma Make.</p>
+      </div>
+      <div class="diamond-step">
+        <span class="n">04</span>
+        <h4>Entrega</h4>
+        <p>Fluxos navegáveis organizados, padronização de estados e interações, prontos para validação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <span class="eyebrow">Pesquisa</span>
+    <h2>Entendendo o problema com quem vive ele</h2>
+    <p>Para compreender de forma aprofundada o comportamento de compra e venda de roupas infantis, estruturei um fluxo de perguntas progressivo, com ramificações condicionais, permitindo explorar diferentes perfis — compradores, vendedores e não usuários do mercado de roupas usadas.</p>
+    <p><strong>Conversei com 8 usuários</strong> e colhi descobertas valiosas com cada um deles, cobrindo desde frequência de compra até o que mais dificulta a decisão de vender ou comprar roupas de segunda mão.</p>
+    <ul>
+      <li>Comparar comportamento real vs. intenção declarada</li>
+      <li>Identificar a diferença entre quem compra e quem evita comprar usados</li>
+      <li>Mapear o que impede a adoção</li>
+      <li>Priorizar funcionalidades com base em dor real, não em suposição</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <span class="eyebrow">Definição</span>
+    <h2>Três perfis, três relações diferentes com confiança</h2>
+    <p>As personas não se diferenciam apenas por dados demográficos, mas principalmente por <strong>nível de confiança na compra de usados, relação com preço, comportamento de revenda e grau de praticidade desejado</strong> na experiência digital.</p>
+
+    <div class="personas">
+      <div class="persona-card">
+        <div class="persona-side yellow">
+          <div class="avatar-ring">M</div>
+          <div class="p-name">Mãe Racional e Desapegada</div>
+          <div class="p-meta">Filho: 3–4 anos · compra a cada 4–6 meses</div>
+          <div class="p-tag">Vende</div>
+        </div>
+        <div class="persona-body">
+          <h5>Objetivo principal</h5>
+          <p>Comprar roupas infantis de qualidade de marcas, com bom custo-benefício, com confiança no pagamento e avaliações de outros compradores.</p>
+          <h5>Dor central</h5>
+          <div class="dor-flag">⚠️ Desvalorização financeira da roupa usada (para venda) + insegurança no processo de venda.</div>
+          <h5>Funcionalidades indispensáveis</h5>
+          <ul><li>Busca por tamanho/idade</li><li>Cadastro rápido de anúncio</li><li>Entrega integrada</li></ul>
+        </div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-side green">
+          <div class="avatar-ring">P</div>
+          <div class="p-name">Pai Prático e Econômico</div>
+          <div class="p-meta">Filho: 1–2 anos · compra a cada 2–3 meses</div>
+          <div class="p-tag">Não vende</div>
+        </div>
+        <div class="persona-body">
+          <h5>Objetivo principal</h5>
+          <p>Comprar roupas infantis sem desgastes, com bom custo-benefício, com confiabilidade do vendedor e nas fotos anunciadas.</p>
+          <h5>Dor central</h5>
+          <div class="dor-flag">⚠️ Processo de venda simples e descomplicado, e valor das peças no preço justo.</div>
+          <h5>Funcionalidades indispensáveis</h5>
+          <ul><li>Busca por tamanho/idade</li><li>Cadastro rápido de anúncio</li></ul>
+        </div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-side purple">
+          <div class="avatar-ring">M</div>
+          <div class="p-name">Mãe Conservadora e Eficiente</div>
+          <div class="p-meta">Filho: 0–6 meses · compra todo mês</div>
+          <div class="p-tag">Não vende e não compra usado</div>
+        </div>
+        <div class="persona-body">
+          <h5>Objetivo principal</h5>
+          <p>Comprar roupas infantis sem desgastes, com bom custo-benefício, com confiabilidade do vendedor e nas fotos anunciadas.</p>
+          <h5>Dor central</h5>
+          <div class="dor-flag">⚠️ Processo de compra rápido e seguro, com chat interno e política de devolução; possibilidade de comprar por kits/lotes, com boas marcas.</div>
+          <h5>Funcionalidades indispensáveis</h5>
+          <ul><li>Busca por tamanho/idade</li><li>Chat interno</li><li>Kits/lotes</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:24px;">A definição dessas personas permitiu compreender que o desafio do produto não era apenas facilitar compra e venda, mas <strong>equilibrar confiança, praticidade e percepção de valor</strong>, atendendo diferentes níveis de maturidade no consumo de roupas usadas.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <span class="eyebrow">Mapa de jornada</span>
+    <h2>Do "antes" ao "depois" da compra ou venda</h2>
+    <p>Construído com base nas pesquisas e nas personas, o mapa de jornada permitiu visualizar não apenas as ações do usuário, mas também suas necessidades, emoções e pontos de fricção — organizados em três momentos: antes (contexto e busca por alternativas), durante (interação com a plataforma) e depois (pós-compra ou pós-venda).</p>
+
+    <div class="journey">
+      <div class="journey-phase-head">
+        <div></div><div>Antes</div><div>Durante</div><div>Depois</div>
+      </div>
+      <div class="journey-row">
+        <div class="journey-label">Atividades</div>
+        <div class="journey-cells">
+          <div class="journey-cell">Busca rápida no Google por sites de roupa infantil de segunda mão; grupos de WhatsApp de compra e venda</div>
+          <div class="journey-cell">Acesso ao marketplace, busca por filtros, negociação via chat, checkout</div>
+          <div class="journey-cell">Recebe produto, avalia vendedor, reutiliza plataforma</div>
+        </div>
+      </div>
+      <div class="journey-row">
+        <div class="journey-label">Necessidades</div>
+        <div class="journey-cells">
+          <div class="journey-cell">Filho cresceu; roupas não servem mais; precisa comprar roupas que sirvam</div>
+          <div class="journey-cell">Processo simples, cadastro rápido, comunicação clara, pagamento seguro</div>
+          <div class="journey-cell">Confirmação de qualidade, facilidade para avaliar, possibilidade de devolução</div>
+        </div>
+      </div>
+      <div class="journey-row">
+        <div class="journey-label">Emoções</div>
+        <div class="journey-cells">
+          <div class="journey-cell">Frustração / incerteza</div>
+          <div class="journey-cell">Cautela → alívio conforme avança</div>
+          <div class="journey-cell">Satisfação, quando a experiência confirma a expectativa</div>
+        </div>
+      </div>
+      <div class="journey-row">
+        <div class="journey-label">Oportunidades</div>
+        <div class="journey-cells">
+          <div class="journey-cell">Destaque para reputação e avaliações desde a primeira busca</div>
+          <div class="journey-cell">Checkout integrado, chat com mediação, sugestão automática de preço</div>
+          <div class="journey-cell">Sistema de avaliação e programa de fidelidade</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:24px;">Mais do que mapear etapas, o objetivo foi evidenciar onde o usuário sente insegurança, frustração ou satisfação — e como o produto poderia atuar estrategicamente para reduzir riscos e fortalecer a confiança na experiência.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <span class="eyebrow">Desenvolvimento</span>
+    <h2>Design System antes do PRD — por quê</h2>
+    <p>Antes da prototipação, construí um <strong>Design System de forma independente</strong>, com o objetivo de estabelecer uma base visual e garantir consistência, escalabilidade e eficiência no desenvolvimento das interfaces: paleta de cores, tipografia, grid e espaçamentos, componentes reutilizáveis (botões, inputs, cards, tags, estados) e padrões de interação (hover, foco, erro, desabilitado).</p>
+    <p>Com o Design System consolidado, avancei para o <strong>PRD (Product Requirements Document)</strong>, estruturando os principais fluxos e requisitos do produto com base nas prioridades definidas na fase de personas.</p>
+
+    <div class="seq">
+      <div class="seq-node">Design System</div>
+      <span class="seq-arrow">→</span>
+      <div class="seq-node">PRD</div>
+      <span class="seq-arrow">→</span>
+      <div class="seq-node">Prototipação no Figma Make</div>
+    </div>
+
+    <p>Esse processo sequencial garantiu uma construção mais estratégica, reduzindo retrabalho e fortalecendo a coerência do produto como um todo. O protótipo final contemplou os principais fluxos mapeados no PRD:</p>
+    <ul>
+      <li><strong>Onboarding</strong> e criação de conta</li>
+      <li><strong>Compra:</strong> busca → filtros → detalhe do produto → carrinho → pagamento → entrega</li>
+      <li><strong>Venda:</strong> criação de anúncio → precificação → publicação → chat → envio</li>
+      <li><strong>Chat e negociação</strong>, integrados ao checkout</li>
+    </ul>
+
+    <div class="cta-row">
+      <a href="https://blog-pine-56950091.figma.site/" target="_blank" rel="noopener" class="btn">Acessar protótipo interativo →</a>
+    </div>
+
+    <div class="note-box">
+      <strong>Nota:</strong> os prints finais das telas em alta resolução ainda precisam ser adicionados aqui — me envie as imagens quando tiver à mão (sem a sobreposição da ferramenta de captura).
+    </div>
+  </div>
+</section>
+
+<section class="section" style="border-bottom:none;">
+  <div class="wrap">
+    <span class="eyebrow">Próximos passos</span>
+    <h2>O que eu faria com mais tempo</h2>
+    <p>Se tivesse mais tempo, aprofundaria testes de usabilidade com usuários reais, estruturaria métricas claras de sucesso, validaria o MVP com dados comportamentais e evoluiria o sistema de reputação para fortalecer ainda mais a confiança na plataforma.</p>
+
+    <div class="cta-row">
+      <a href="index.html" class="btn ghost">← Voltar aos trabalhos</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Isabela Gonçalves Andrade — <a href="mailto:goncalvesandradeisabela01@gmail.com">goncalvesandradeisabela01@gmail.com</a>
+</footer>
+
+</body>
+</html>
