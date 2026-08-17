@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isabela Gonçalves Andrade — Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --terracota:#C1622F;
+    --terracota-deep:#9C4C22;
+    --sage:#7A8B6F;
+    --gold:#C9A15C;
+    --cream:#FAF6F1;
+    --ink:#3A332C;
+    --ink-soft:#6B6255;
+    --line:#E7DCCB;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Public Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 32px;}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,246,241,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .brand{font-family:'Fraunces', serif; font-size:19px; font-weight:600;}
+  .brand span{color:var(--terracota);}
+  .navlinks{display:flex; gap:36px; font-size:15px; font-weight:500;}
+  .navlinks a{position:relative; color:var(--ink-soft); transition:color .2s;}
+  .navlinks a:hover{color:var(--terracota);}
+  .navlinks a:focus-visible, .btn:focus-visible{outline:2px solid var(--terracota); outline-offset:3px;}
+  .btn{
+    background:var(--terracota); color:#fff; padding:10px 22px;
+    border-radius:100px; font-size:14px; font-weight:600;
+    transition:background .2s, transform .2s;
+    display:inline-block;
+  }
+  .btn:hover{background:var(--terracota-deep); transform:translateY(-1px);}
+  .btn.ghost{background:transparent; color:var(--terracota); border:1.5px solid var(--terracota);}
+  .btn.ghost:hover{background:var(--terracota); color:#fff;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:100px 0 80px; position:relative; overflow:hidden;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--sage); margin-bottom:22px;
+  }
+  .eyebrow::before{content:''; width:7px; height:7px; border-radius:50%; background:var(--sage); display:inline-block;}
+  .hero h1{
+    font-size:clamp(38px, 5.6vw, 60px);
+    line-height:1.08;
+    max-width:820px;
+    margin-bottom:26px;
+  }
+  .hero h1 em{color:var(--terracota); font-style:italic;}
+  .hero p.lede{
+    font-size:19px; color:var(--ink-soft); max-width:560px; margin-bottom:36px;
+  }
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+
+  /* flow-line signature: echoes her Miro flow-mapping process */
+  .flow-signature{
+    margin-top:70px; display:flex; align-items:center; gap:0;
+    flex-wrap:wrap;
+  }
+  .flow-node{
+    display:flex; align-items:center; gap:10px;
+    font-size:13px; font-weight:600; color:var(--ink-soft);
+    padding:9px 16px; border:1px solid var(--line); border-radius:100px;
+    background:var(--card);
+  }
+  .flow-node .dot{width:6px; height:6px; border-radius:50%; background:var(--gold);}
+  .flow-arrow{width:34px; height:1px; background:var(--line); position:relative; margin:0 4px;}
+  .flow-arrow::after{
+    content:''; position:absolute; right:0; top:-3px;
+    border:4px solid transparent; border-left-color:var(--line);
+  }
+
+  /* ---------- SECTION HEADS ---------- */
+  .section{padding:88px 0;}
+  .section-head{margin-bottom:48px; max-width:640px;}
+  .section-eyebrow{
+    font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--terracota); margin-bottom:14px; display:block;
+  }
+  .section h2{font-size:clamp(28px,3.4vw,38px); margin-bottom:14px;}
+  .section-head p{color:var(--ink-soft); font-size:16px;}
+
+  /* ---------- CASE STUDIES ---------- */
+  .cases{display:flex; flex-direction:column; gap:22px;}
+  .case-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:36px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:24px;
+    align-items:start;
+    transition:border-color .2s, transform .2s;
+  }
+  .case-card:hover{border-color:var(--terracota); transform:translateY(-2px);}
+  .case-tag{
+    display:inline-block; font-size:12px; font-weight:700; letter-spacing:.04em;
+    text-transform:uppercase; color:var(--sage); margin-bottom:10px;
+  }
+  .case-card h3{font-size:24px; margin-bottom:10px;}
+  .case-card p.desc{color:var(--ink-soft); font-size:15px; max-width:560px; margin-bottom:16px;}
+  .case-meta{display:flex; gap:10px; flex-wrap:wrap;}
+  .pill{
+    font-size:12px; font-weight:600; color:var(--ink-soft);
+    background:var(--cream); border:1px solid var(--line);
+    padding:5px 12px; border-radius:100px;
+  }
+  .case-result{
+    display:flex; flex-direction:column; align-items:flex-end; justify-content:center;
+    text-align:right; min-width:120px;
+  }
+  .case-result .num{font-family:'Fraunces',serif; font-size:34px; color:var(--terracota); line-height:1;}
+  .case-result .label{font-size:12px; color:var(--ink-soft); margin-top:4px; max-width:120px;}
+  .case-placeholder{
+    border:1.5px dashed var(--line); background:transparent;
+  }
+  .case-placeholder .fill-note{
+    font-size:13px; color:var(--terracota); font-weight:600;
+    background:#FBEFE6; border-radius:8px; padding:8px 12px; display:inline-block; margin-top:6px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:start;}
+  .about-grid p{color:var(--ink-soft); font-size:16px; margin-bottom:16px;}
+  .about-grid p strong{color:var(--ink); font-weight:600;}
+  .skills-block{
+    background:var(--card); border:1px solid var(--line); border-radius:18px; padding:28px;
+  }
+  .skills-block h4{
+    font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--sage); margin-bottom:8px; margin-top:20px;
+  }
+  .skills-block h4:first-child{margin-top:0;}
+  .skills-block p{font-size:14px; color:var(--ink-soft); margin-bottom:0;}
+
+  /* ---------- FOOTER / CONTACT ---------- */
+  footer{
+    background:var(--ink); color:var(--cream); padding:70px 0 40px; margin-top:40px;
+  }
+  footer h2{color:var(--cream); font-size:clamp(30px,4vw,44px); margin-bottom:16px; max-width:600px;}
+  footer p{color:#C9C1B3; font-size:16px; margin-bottom:32px; max-width:480px;}
+  .footer-links{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:56px;}
+  footer .btn.ghost{color:var(--cream); border-color:#5A5248;}
+  footer .btn.ghost:hover{background:var(--terracota); border-color:var(--terracota); color:#fff;}
+  .footer-bottom{
+    border-top:1px solid #4A4338; padding-top:24px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size:13px; color:#8B8375;
+  }
+
+  @media (max-width: 760px){
+    .navlinks{display:none;}
+    .about-grid{grid-template-columns:1fr;}
+    .case-card{grid-template-columns:1fr;}
+    .case-result{align-items:flex-start; text-align:left;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">Isabela <span>Gonçalves Andrade</span></div>
+    <div class="navlinks">
+      <a href="#trabalhos">Trabalhos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </div>
+    <a href="#contato" class="btn">Vamos conversar</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Product Designer · AX Design</span>
+    <h1>Desenho fluxos que <em>fazem sentido</em> antes de desenhar telas bonitas.</h1>
+    <p class="lede">Product Designer com foco em discovery, pesquisa e sistemas B2B — unindo UX Research a agentes de automação com IA para acelerar da descoberta à entrega.</p>
+    <div class="hero-actions">
+      <a href="#trabalhos" class="btn">Ver trabalhos</a>
+      <a href="Isabela_Goncalves_Andrade_CV_atualizado.pdf" target="_blank" class="btn ghost">Baixar currículo</a>
+    </div>
+
+    <div class="flow-signature">
+      <div class="flow-node"><span class="dot"></span>Descoberta</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node"><span class="dot"></span>Mapeamento de fluxo</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node"><span class="dot"></span>Design System</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node"><span class="dot"></span>Automação com IA</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="trabalhos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Trabalhos selecionados</span>
+      <h2>Três projetos, três problemas de fluxo</h2>
+      <p>Cada case aqui parte de um problema real de produto — não de uma tela isolada.</p>
+    </div>
+
+    <div class="cases">
+
+      <!-- DPONet: content we already have solid, with real result -->
+      <a href="dponet.html" class="case-card" style="display:grid; cursor:pointer;">
+        <div>
+          <span class="case-tag">DPONet · SaaS B2B (privacidade e compliance)</span>
+          <h3>Por que ninguém respondia o questionário de risco?</h3>
+          <p class="desc">Pesquisa com usuários revelou que o formulário extenso levava mais de uma semana para ser preenchido. Redesenhei o módulo em formato gamificado, dividido em blocos com sistema de progresso e conquistas.</p>
+          <div class="case-meta">
+            <span class="pill">UX Research</span>
+            <span class="pill">Gamificação</span>
+            <span class="pill">Redesign de fluxo</span>
+          </div>
+        </div>
+        <div class="case-result">
+          <span class="num">-70%</span>
+          <span class="label">em volume de RMCs após o redesign</span>
+        </div>
+      </a>
+
+      <!-- RZ Psicologia: in progress, real facts we have -->
+      <div class="case-card">
+        <div>
+          <span class="case-tag">RZ Psicologia · Plataforma de gestão clínica</span>
+          <h3>Redesenhando agenda, prontuário e financeiro do zero</h3>
+          <p class="desc">Mapeamento de 3 módulos inter-relacionados em Miro, Design System construído do zero (tokens, tipografia, style guide) e um agente de automação próprio (n8n + IA) para acelerar o discovery visual com o cliente.</p>
+          <div class="case-meta">
+            <span class="pill">Design System</span>
+            <span class="pill">Automação com IA</span>
+            <span class="pill">Em andamento</span>
+          </div>
+        </div>
+        <div class="case-result">
+          <span class="num">3</span>
+          <span class="label">módulos mapeados e validados com o cliente</span>
+        </div>
+      </div>
+
+      <!-- KidLoop: real content from Notion case study -->
+      <a href="kidloop.html" class="case-card" style="display:grid; cursor:pointer;">
+        <div>
+          <span class="case-tag">KidLoop · Marketplace de moda infantil (C2C)</span>
+          <h3>Como criar confiança em um marketplace de roupas infantis usadas?</h3>
+          <p class="desc">Processo completo em metodologia Double Diamond: pesquisa com 8 usuários, construção de 3 personas e mapa de jornada, Design System construído antes do PRD, e protótipo navegável cobrindo onboarding, compra, venda e chat integrado ao checkout no Figma Make.</p>
+          <div class="case-meta">
+            <span class="pill">Double Diamond</span>
+            <span class="pill">UX Research</span>
+            <span class="pill">Design System</span>
+            <span class="pill">Protótipo navegável</span>
+          </div>
+        </div>
+        <div class="case-result">
+          <span class="num">8</span>
+          <span class="label">entrevistas para mapear dores de compra e venda</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sobre" style="background:#F3ECE1; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Sobre</span>
+      <h2>De lógica de programação a design de produto</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>Comecei como estagiária de desenvolvimento fullstack na <strong>DPONet</strong>, trabalhando com lógica de programação, POO e banco de dados relacional — uma base técnica que hoje molda como penso produto.</p>
+        <p>A transição para Product Design aconteceu na mesma empresa, onde conduzi pesquisa com usuários, mapeei jornadas e liderei o redesign completo da plataforma com construção de Design System.</p>
+        <p>Na mesma empresa, também assumi de forma informal responsabilidades de <strong>Product Owner</strong> — gerenciamento de backlog, priorização de features e escrita de especificações funcionais — além de ter conduzido discovery e design do fluxo de cobrança/assinatura (com integração a gateway de pagamento) e do desenvolvimento de produtos internos para o time comercial, incluindo ferramentas de captação de leads.</p>
+        <p>Hoje atuo como freelancer em redesign de sistemas B2B, unindo <strong>UX Research</strong>, <strong>Design System</strong> e <strong>AX Design (Agentic Experience Design)</strong> — construção de agentes de automação com IA aplicados a fluxos reais de produto. Também curso Análise e Desenvolvimento de Sistemas (ADS) na UNIMAR.</p>
+      </div>
+      <div class="skills-block">
+        <h4>Design & UX</h4>
+        <p>Discovery, UX Research, Prototipação, Design System, Figma</p>
+        <h4>Produto</h4>
+        <p>Backlog, PRDs e specs, critérios de aceite, priorização de features</p>
+        <h4>Automação & IA</h4>
+        <p>n8n, Construção de agentes de IA, Integração de APIs</p>
+        <h4>Base técnica</h4>
+        <p>Lógica de programação, POO, SQL, HTML/CSS, Git</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contato">
+  <div class="wrap">
+    <h2>Vamos conversar sobre o próximo produto?</h2>
+    <p>Aberta a oportunidades de Product Design em SaaS B2B e produtos AI-adjacent.</p>
+    <div class="footer-links">
+      <a href="mailto:goncalvesandradeisabela01@gmail.com" class="btn ghost">E-mail</a>
+      <a href="https://www.linkedin.com/in/isabela-ux" target="_blank" rel="noopener" class="btn ghost">LinkedIn</a>
+      <a href="Isabela_Goncalves_Andrade_CV_atualizado.pdf" target="_blank" class="btn ghost">Currículo (PDF)</a>
+    </div>
+    <div class="footer-bottom">
+      <span>Isabela Gonçalves Andrade — Marília, SP</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
